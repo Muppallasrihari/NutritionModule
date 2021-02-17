@@ -14,7 +14,7 @@ public class NutritionPlanService {
 
 	public NutritionPlan addOrUpdate(NutritionPlan nutritionPlan) {
 		try {
-			nutritionPlan.setPlanId(nutritionPlan.getPlanId().toUpperCase());
+			nutritionPlan.setPlanId(nutritionPlan.getPlanId());
 			return nutritionRepository.save(nutritionPlan);
 		} catch (Exception e) {
 			throw new NutritionIdException("NUtrition Plan with :" + nutritionPlan.getPlanId() + " is already exists.");
@@ -25,19 +25,19 @@ public class NutritionPlanService {
 		return nutritionRepository.findAll();
 	}
 
-	public NutritionPlan getNutritionPlanById(String planId) {
-		NutritionPlan nutritionPlan = nutritionRepository.findById(planId.toUpperCase());
+	public NutritionPlan getNutritionPlanById(int planId) {
+		NutritionPlan nutritionPlan = nutritionRepository.findByPlanId(planId);
 		if (nutritionPlan == null) {
-			throw new NutritionIdException("Nutrition Plan with :" + planId.toUpperCase() + " does not exists.");
+			throw new NutritionIdException("Nutrition Plan with :" + planId + " does not exists.");
 		}
 		return nutritionPlan;
 
 	}
 	
-	public void deleteNutritionPlanById(String planId) {
-		NutritionPlan nutritionPlan = nutritionRepository.findById(planId.toUpperCase());
+	public void deleteNutritionPlanById(int planId) {
+		NutritionPlan nutritionPlan = nutritionRepository.findByPlanId(planId);
 		if (nutritionPlan == null) {
-			throw new NutritionIdException("Nutrition Plan with :" + planId.toUpperCase() + " does not exists.");
+			throw new NutritionIdException("Nutrition Plan with :" + planId + " does not exists.");
 		}
 		nutritionRepository.delete(nutritionPlan);
 	}

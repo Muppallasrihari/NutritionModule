@@ -15,22 +15,25 @@ public class NutritionPlan {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String planId;
+	private int planId;
 	private String name;
 	private String description;
 	private Date createdAt;
 	private Date updatedAt;
+	private double price;
 	
 	
+	
+
 	public NutritionPlan() {
 		super();
 	}
 
-	public String getPlanId() {
+	public int getPlanId() {
 		return planId;
 	}
 
-	public void setPlanId(String planId) {
+	public void setPlanId(int planId) {
 		this.planId = planId;
 	}
 
@@ -81,6 +84,13 @@ public class NutritionPlan {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
 	@PrePersist

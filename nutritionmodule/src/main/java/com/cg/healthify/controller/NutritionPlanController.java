@@ -25,7 +25,7 @@ public class NutritionPlanController {
 	private MapValidationErrorService mapValidationErrorService;
 	
 	@PostMapping("/nutritionplan")
-	public ResponseEntity<?> createNewProject(@Valid @RequestBody NutritionPlan nutritionPlan, BindingResult result) {
+	public ResponseEntity<?> addNutritionPlan(@Valid @RequestBody NutritionPlan nutritionPlan, BindingResult result) {
 		
 		ResponseEntity<?> errorMap=mapValidationErrorService.mapValidationError(result);
 		if(errorMap!=null) {
@@ -37,7 +37,7 @@ public class NutritionPlanController {
 	
 	
 	@GetMapping("/nutritionplan/{planId}")
-	public ResponseEntity<NutritionPlan> getNutritionPlanById(@PathVariable String planId){
+	public ResponseEntity<NutritionPlan> getNutritionPlanById(@PathVariable int planId){
 		NutritionPlan nutritionPlan=nutritionPlanService.getNutritionPlanById(planId);
 		return new ResponseEntity<NutritionPlan>(nutritionPlan,HttpStatus.OK);
 	}
@@ -48,9 +48,9 @@ public class NutritionPlanController {
 	}
 	
 	@DeleteMapping("/nutritionplan/{planId}")
-	public ResponseEntity<?> deleteById(@PathVariable String planId) {
+	public ResponseEntity<?> deleteNutritionPlanById(@PathVariable int planId) {
 		nutritionPlanService.deleteNutritionPlanById(planId);
-		return new ResponseEntity<String>("Nutrition Plan with Id "+planId.toUpperCase()+" deleted successfully", HttpStatus.OK);
+		return new ResponseEntity<String>("Nutrition Plan with Id "+planId+" deleted successfully", HttpStatus.OK);
 	}
 	
 
