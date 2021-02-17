@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class NutritionPlan {
@@ -15,11 +17,16 @@ public class NutritionPlan {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@NotBlank(message="Nutrition Plan Id is required.")
 	private int planId;
+	@NotBlank(message="Nutrition Plan Name is required.")
 	private String name;
+	@NotBlank(message="Nutrition Plan Description is required.")
 	private String description;
 	private Date createdAt;
 	private Date updatedAt;
+	@NotBlank(message="Nutrition Plan Id is required.")
+	@Min(value=0)
 	private double price;
 	
 	
