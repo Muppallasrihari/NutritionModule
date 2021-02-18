@@ -101,7 +101,7 @@ public class NutritionPlan {
 	}
 	
 	@PrePersist
-	public void onCretae() {
+	public void onCreate() {
 		this.createdAt=new Date();
 	}
 	@PreUpdate
