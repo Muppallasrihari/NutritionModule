@@ -1,4 +1,4 @@
-package com.cg.healthify.service;
+package com.example.demo.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.validation.FieldError;
 @Service
 public class MapValidationErrorService {
 	
-	public ResponseEntity<Map<String,String>> mapValidationError(BindingResult result){
+	public ResponseEntity<?> mapValidationError(BindingResult result){
 		
 		if(result.hasErrors()) {
 			Map<String,String> errorMap =new HashMap<>();
